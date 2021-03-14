@@ -20,10 +20,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -48,13 +46,4 @@ public class User {
 			)
 	private Set<GroupInfo> groupInfos = new HashSet<>();
 
-	public User(String fullName, String emailId, String phoneNumber, String userName, String password, String userDp) {
-		super();
-		this.fullName = fullName;
-		this.emailId = emailId;
-		this.phoneNumber = phoneNumber;
-		this.userName = userName;
-		this.password = password;
-		this.userDp = userDp;
-	}
 }

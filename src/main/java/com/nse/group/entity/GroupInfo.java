@@ -15,9 +15,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Data
+@NoArgsConstructor
 @Entity
 public class GroupInfo {
 
@@ -30,9 +29,4 @@ public class GroupInfo {
 	@ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL , mappedBy = "groupInfos")
 	private Set<User> users = new HashSet<>();
 
-	public GroupInfo(String groupName) {
-		super();
-		this.groupName = groupName;
-	}
-	
 }
