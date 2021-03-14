@@ -1,1 +1,16 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/chatapp
+    username: Bhavin
+    password: bhavin1998
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+  application:
+    name: group-chat-service
 
