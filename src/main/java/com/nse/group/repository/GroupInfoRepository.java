@@ -18,5 +18,8 @@ public interface GroupInfoRepository extends JpaRepository<GroupInfo, Long> {
 	@Transactional
 	@Query(value = "SELECT GI.GROUP_NAME FROM GROUP_INFO GI JOIN USER_GROUP GR ON GR.GROUP_ID  = GI.GROUP_ID WHERE GR.USER_ID = ?1", nativeQuery = true)
 	List<String> getGroup(long userId);
+	
+	
+	GroupInfo findByGroupName(String name);
 
 }
