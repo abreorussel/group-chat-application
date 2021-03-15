@@ -1,6 +1,7 @@
 package com.nse.group.entity;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Data
 @Entity
 @Table(name = "messages")
@@ -26,11 +26,11 @@ public class Message {
 	private long messageid;
 	private long groupId;
 	private String message;
-	private enum messagetype {string, attachment};
-	private Timestamp sentAt;
+	private enum messagetype {string, attachment}
+	private LocalDateTime sentAt;
 	private long attachmentId;
 
-	public Message(long messageid, long groupId, String message, Timestamp sentAt, long attachmentId) {
+	public Message(long messageid, long groupId, String message, LocalDateTime sentAt, long attachmentId) {
 		super();
 		this.messageid = messageid;
 		this.groupId = groupId;
