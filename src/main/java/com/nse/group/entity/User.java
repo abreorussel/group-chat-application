@@ -16,19 +16,23 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@EqualsAndHashCode(exclude = "group_infos")
+@ToString(exclude = "group_infos")
 @Entity
 @Table(name = "users")
 public class User {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
@@ -40,14 +44,12 @@ public class User {
 	private String password;
 	private LocalDate creationDate = LocalDate.now();
 	private String userDp;
-	
-//	@ManyToMany(fetch = FetchType.EAGER , cascade = {CascadeType.MERGE , CascadeType.PERSIST})
-//	@JoinTable(name = "user_group" , 
-//		joinColumns = {@JoinColumn(name = "user_id")},
-//		inverseJoinColumns = {@JoinColumn(name = "group_id")}
-//			)
-	@ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL , mappedBy = "users")
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "users")
+	@JsonIgnoreProperties("users")
 	private Set<GroupInfo> groupInfos = new HashSet<>();
+
+	// parameterized constructor
 
 	public User(String fullName, String emailId, String phoneNumber, String userName, String password, String userDp) {
 		super();
@@ -58,21 +60,16 @@ public class User {
 		this.password = password;
 		this.userDp = userDp;
 	}
-	
-	
+
+	// Utility Methods
 	public void addGroup(GroupInfo group) {
 		this.groupInfos.add(group);
 		group.getUsers().add(this);
 	}
-	
-	
+
 	public void removeGroup(GroupInfo group) {
 		this.groupInfos.remove(group);
 		group.getUsers().remove(this);
 	}
-	
 
-	
-	
-	
 }

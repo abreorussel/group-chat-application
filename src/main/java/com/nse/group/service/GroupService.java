@@ -37,19 +37,5 @@ public class GroupService implements IGroupService{
 	}
 
 
-	@Override
-	public List<GroupInfo> getAllGroups() {
-		
-		return repo.getGroups();
-	}
-
-
-
-
-	
-
-
-	
-	
 
 }

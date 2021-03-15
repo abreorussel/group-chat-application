@@ -35,8 +35,6 @@ public class UserController {
 	@PostMapping("/add")
 	public User addUser(@RequestBody User user) {
 		
-		//user.getGroupInfos().add(groupService.findByGroupName(groupName));
-		
 		return userService.addUser(user);
 		
 	}
