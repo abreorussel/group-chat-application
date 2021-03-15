@@ -41,11 +41,12 @@ public class User {
 	private LocalDate creationDate = LocalDate.now();
 	private String userDp;
 	
-	@ManyToMany(fetch = FetchType.LAZY , cascade = {CascadeType.ALL})
-	@JoinTable(name = "user_group" , 
-		joinColumns = {@JoinColumn(name = "user_id")},
-		inverseJoinColumns = {@JoinColumn(name = "group_id")}
-			)
+//	@ManyToMany(fetch = FetchType.EAGER , cascade = {CascadeType.MERGE , CascadeType.PERSIST})
+//	@JoinTable(name = "user_group" , 
+//		joinColumns = {@JoinColumn(name = "user_id")},
+//		inverseJoinColumns = {@JoinColumn(name = "group_id")}
+//			)
+	@ManyToMany(fetch = FetchType.LAZY , cascade = CascadeType.ALL , mappedBy = "users")
 	private Set<GroupInfo> groupInfos = new HashSet<>();
 
 	public User(String fullName, String emailId, String phoneNumber, String userName, String password, String userDp) {
@@ -56,6 +57,18 @@ public class User {
 		this.userName = userName;
 		this.password = password;
 		this.userDp = userDp;
+	}
+	
+	
+	public void addGroup(GroupInfo group) {
+		this.groupInfos.add(group);
+		group.getUsers().add(this);
+	}
+	
+	
+	public void removeGroup(GroupInfo group) {
+		this.groupInfos.remove(group);
+		group.getUsers().remove(this);
 	}
 	
 

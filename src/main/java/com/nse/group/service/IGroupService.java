@@ -13,4 +13,10 @@ public interface IGroupService {
 	
 	public GroupInfo findByGroupName(String name);
 	
+	public void deleteGroup(GroupInfo group);
+
+	public List<GroupInfo> getAllGroups();
+	
+	//public void addUserToGroup(GroupInfo name ,  User user);
 }
+

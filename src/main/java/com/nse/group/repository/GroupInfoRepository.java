@@ -22,4 +22,9 @@ public interface GroupInfoRepository extends JpaRepository<GroupInfo, Long> {
 	
 	GroupInfo findByGroupName(String name);
 
+	
+	@Modifying
+	@Transactional
+	@Query(value = "SELECT * FROM GROUP_INFO" , nativeQuery = true)
+	List<GroupInfo> getGroups();
 }
