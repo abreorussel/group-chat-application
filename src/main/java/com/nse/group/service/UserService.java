@@ -1,5 +1,7 @@
 package com.nse.group.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,18 @@ public class UserService implements IUserService{
 	public User addUser(User user) {
 		
 		return repo.save(user);
+	}
+
+	@Override
+	public List<User> getUsers() {
+		
+		return repo.findAll();
+	}
+
+	@Override
+	public User findByUserName(String name) {
+		
+		return repo.findByUserName(name);
 	}
 
 }
