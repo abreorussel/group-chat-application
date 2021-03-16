@@ -2,7 +2,11 @@ package com.nse.group.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,13 +32,18 @@ public class UserController {
 	
 
 	
-	@PostMapping("/add/{groupName}")
-	public User addUser(@PathVariable String groupName , @RequestBody User user) {
-		
-		user.getGroupInfos().add(groupService.findByGroupName(groupName));
+	@PostMapping("/add")
+	public User addUser(@RequestBody User user) {
 		
 		return userService.addUser(user);
 		
+	}
+	
+	
+	@GetMapping("/get")
+	public List<User> getUsers(){
+		
+		return userService.getUsers();
 	}
 	
 	
