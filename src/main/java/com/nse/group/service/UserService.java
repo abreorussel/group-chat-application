@@ -9,28 +9,27 @@ import com.nse.group.entity.User;
 import com.nse.group.repository.UserRepository;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
-	
 	@Autowired
-	UserRepository repo;
+	UserRepository userRepo;
 	
 	@Override
 	public User addUser(User user) {
 		
-		return repo.save(user);
+		return userRepo.save(user);
 	}
 
 	@Override
 	public List<User> getUsers() {
 		
-		return repo.findAll();
+		return userRepo.findAll();
 	}
 
 	@Override
 	public User findByUserName(String name) {
 		
-		return repo.findByUserName(name);
+		return userRepo.findByUserName(name);
 	}
 
 }

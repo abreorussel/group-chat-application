@@ -1,7 +1,5 @@
 package com.nse.group.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,29 +15,23 @@ import com.nse.group.entity.User;
 import com.nse.group.service.IGroupService;
 import com.nse.group.service.IUserService;
 
-
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-	
 	@Autowired
 	IUserService userService;
-	
-	
+
 	@Autowired
 	IGroupService groupService;
-	
 
-	
 	@PostMapping("/add")
 	public User addUser(@RequestBody User user) {
 		
 		return userService.addUser(user);
 		
 	}
-	
-	
+
 	@GetMapping("/get")
 	public List<User> getUsers(){
 		

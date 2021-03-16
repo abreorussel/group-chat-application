@@ -13,15 +13,15 @@ import com.nse.group.repository.MessageRepository;
 public class MessageService implements IMessageService{
 
 	@Autowired
-    MessageRepository repo;
+    MessageRepository messageRepo;
 
 	public Message saveMessage(Message message) {
 		message.setSentAt(LocalDateTime.now());
-		return repo.save(message);
+		return messageRepo.save(message);
 	}
 
 	public List<Message> findMessages(int fromUser, int toUser) {
-		return repo.findByFromAndToUser(fromUser, toUser);
+		return messageRepo.findByFromAndToUser(fromUser, toUser);
 	}
 
 }

@@ -10,7 +10,8 @@ import com.nse.group.entity.Message;
 
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
-	@Query(value="select * from message m where m.from_user_id = ?1 and m.to_user_id = ?2",nativeQuery = true)
+
+	@Query(value="SELECT * FROM message m WHERE m.from_user_id = ?1 AND m.to_user_id = ?2", nativeQuery = true)
 	List<Message> findByFromAndToUser(int fromUserId, int toUserId);
 
 }
