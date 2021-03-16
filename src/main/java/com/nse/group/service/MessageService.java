@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.nse.group.entity.Message;
-import com.nse.group.repository.IMessageRepository;
+import com.nse.group.repository.MessageRepository;
 
 @Service
-public class MessageService {
+public class MessageService implements IMessageService{
 
 	@Autowired
-	IMessageRepository repo;
+    MessageRepository repo;
 
 	public Message saveMessage(Message message) {
 		message.setSentAt(LocalDateTime.now());
