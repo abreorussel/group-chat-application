@@ -16,7 +16,6 @@ public class MessageService implements IMessageService{
     MessageRepository messageRepo;
 
 	public Message saveMessage(Message message) {
-		message.setSentAt(LocalDateTime.now());
 		return messageRepo.save(message);
 	}
 

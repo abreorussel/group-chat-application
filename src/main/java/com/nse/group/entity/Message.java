@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.nse.group.util.ChatUtility;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,19 +23,17 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "messageid")
 	private long messageId;
+	private String sender;
 	private long groupId;
 	private String message;
-	private enum messagetype {STRING, ATTACHMENT}
-	private LocalDateTime sentAt;
-	private long attachmentId;
+	//private enum messagetype {STRING, ATTACHMENT}
+	private String sentAt;
+	//private long attachmentId;
 
-	public Message(long messageId, long groupId, String message, LocalDateTime sentAt, long attachmentId) {
-		super();
-		this.messageId = messageId;
-		this.groupId = groupId;
+	public Message(String sender, String message) {
+		this.sender = sender;
 		this.message = message;
-		this.sentAt = sentAt;
-		this.attachmentId = attachmentId;
+		this.sentAt = ChatUtility.getCurrentTimeStamp();
 	}
 
 }

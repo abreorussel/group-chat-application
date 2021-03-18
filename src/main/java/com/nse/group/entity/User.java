@@ -18,6 +18,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.nse.group.util.ChatUtility;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -42,8 +43,7 @@ public class User {
 	private String phoneNumber;
 	private String userName;
 	private String password;
-	private LocalDate creationDate = LocalDate.now();
-	private String userDp;
+	private LocalDate creationDate;
 
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "users")
 	@JsonIgnoreProperties("users")
@@ -51,14 +51,14 @@ public class User {
 
 	// parameterized constructor
 
-	public User(String fullName, String emailId, String phoneNumber, String userName, String password, String userDp) {
+	public User(String fullName, String emailId, String phoneNumber, String userName, String password) {
 		super();
 		this.fullName = fullName;
 		this.emailId = emailId;
 		this.phoneNumber = phoneNumber;
 		this.userName = userName;
 		this.password = password;
-		this.userDp = userDp;
+		this.creationDate = ChatUtility.getCurrentDate();
 	}
 
 	// Utility Methods
