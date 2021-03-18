@@ -91,7 +91,7 @@
 
             function sendConnection(message) {
                 var text = userName + message;
-                sendBroadcast({'from': 'server', 'text': text});
+                sendBroadcast({'sender': 'server', 'message': text});
             }
 
             function sendBroadcast(json) {
@@ -100,17 +100,17 @@
 
             function send() {
                 var text = $("#message").val();
-                sendBroadcast({'from': userName, 'text': text});
+                sendBroadcast({'sender': userName, 'message': text});
                 $("#message").val("");
             }
 
             function createTextNode(messageObj) {
                 return '<div class="row alert alert-info"><div class="col-md-8">' +
-                        messageObj.text +
+                        messageObj.message +
                         '</div><div class="col-md-4 text-right"><small>[<b>' +
-                        messageObj.from +
+                        messageObj.sender +
                         '</b> ' +
-                        messageObj.time +
+                        messageObj.sentAt +
                         ']</small>' +
                         '</div></div>';
             }

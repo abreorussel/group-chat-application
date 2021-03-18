@@ -30,9 +30,10 @@ public class Message {
 	private String sentAt;
 	//private long attachmentId;
 
-	public Message(String sender, String message) {
+	public Message(String sender, String message, long groupId) {
 		this.sender = sender;
 		this.message = message;
+		this.groupId = groupId;
 		this.sentAt = ChatUtility.getCurrentTimeStamp();
 	}
 

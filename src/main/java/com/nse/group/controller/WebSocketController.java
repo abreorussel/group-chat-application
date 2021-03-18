@@ -16,10 +16,18 @@ public class WebSocketController {
         return "sockjs-broadcast";
     }
 
+
     @MessageMapping("/broadcast")
+    @SendTo("/topic/broadcast")
+    public Message send(Message message) throws Exception {
+        return new Message(message.getSender(), message.getMessage(), 1L);
+
+    }
+
+   /* @MessageMapping("/broadcast")
     @SendTo("/topic/broadcast")
     public ChatMessage send(ChatMessage chatMessage) throws Exception {
         return new ChatMessage(chatMessage.getFrom(), chatMessage.getText(), "ALL");
 
-    }
+    }*/
 }
