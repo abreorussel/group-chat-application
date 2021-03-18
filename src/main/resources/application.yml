@@ -1,37 +1,44 @@
+server:
+  port: 9001
 
-
-
-server:  port: 9001
-
-  error:    include-message: always
+  error:
+    include-message: always
  
 spring:
   application:
     name: GROUPCHAT-SERVICE
+
     
     
 
   datasource:
-    url: jdbc:mysql://localhost:3306/app?allowPublicKeyRetrieval=true&useSSL=false
-    username: root
-    password: root
+    url: jdbc:mysql://localhost:3306/chatapp?allowPublicKeyRetrieval=true&useSSL=false
+    username: Bhavin
+    password: bhavin1998
     driver-class-name: com.mysql.cj.jdbc.Driver
     
   jpa:
     hibernate:
       ddl-auto: update
       
-    properties:      hibernate:
+    properties:
+      hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
         
     show-sql: true
         
 
-logging:  level:    org:
+logging:
+  level:
+    org:
       hibernate:
         SQL: DEBUG
-     
-    
+
+
+
+   
+ 
+
 
     
  
